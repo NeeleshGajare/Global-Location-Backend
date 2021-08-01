@@ -14,8 +14,11 @@ router.get('/user/:uid', placesController.getPlacesByUserId);
 router.use(checkAuth);
 
 router.post('/',
-    fileUpload.single('image'),
-    [check('title').notEmpty(), check('description').isLength({ min: 5 }), check('address').notEmpty()],
+    // fileUpload.single('image'),
+    [check('title').notEmpty(), 
+    check('description').isLength({ min: 5 }), 
+    check('address').notEmpty(),
+    check('image').notEmpty()],
     placesController.createPlace);
 
 router.patch('/:pid',

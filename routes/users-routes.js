@@ -9,8 +9,9 @@ const router = express.Router();
 router.get('/', usersController.getUsers);
 
 router.post('/signup',
-    fileUpload.single('image'),
+    // fileUpload.single('image'),
     [check('name').notEmpty(),
+    check('image').notEmpty(),
     check('email').normalizeEmail().isEmail(),
     check('password').isLength({ min: 6 })],
     usersController.signup);
